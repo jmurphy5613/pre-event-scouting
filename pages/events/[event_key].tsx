@@ -1,13 +1,18 @@
-import styles from '@/styles/Home.module.css'
-import { getAllOPRsFromEvents, getAllTeams, getHighestOPRs, getUniqueEvents } from '@/utils/requests'
-import { LeaderboardInfo } from '@/utils/types'
-import { useState } from 'react'
+import { useEffect, useState } from "react"
+import { LeaderboardInfo } from "@/utils/types"
+import styles from '../../styles/EventProfile.module.css'
+import { getAllTeams, getUniqueEvents, getHighestOPRs, getAllOPRsFromEvents } from "@/utils/requests"
+import { useRouter } from "next/router"
 
-
-export default function Home() {
-
+const EventPage = () => {
     const [eventId, setEventId] = useState('')
     const [teamData, setTeamData] = useState<Array<LeaderboardInfo>>()
+
+    const router = useRouter()
+
+    useEffect(() => {
+        console.log(router.pathname)
+    }, [router.isReady])
 
     return (
         <div className={styles.container}>
@@ -43,3 +48,5 @@ export default function Home() {
         </div>
     )
 }
+
+export default EventPage
