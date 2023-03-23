@@ -1,0 +1,26 @@
+.container {
+    height: 10vh;
+    width: 100%;
+    background-color: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.title {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+.links {
+    display: flex;
+    margin-right: 1rem;
+}
+
+.link {
+    font-family: "Outfit", sans-serif;
+    font-size: 1rem;
+    margin: 1rem;
+    cursor: pointer;
+}
