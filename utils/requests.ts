@@ -36,7 +36,9 @@ export const getAllOPRsFromEvents = async (eventList: Array<string>, teamList: A
         })
         if(eventOprReq.data) { 
             const oprList = eventOprReq.data.oprs
-            allOPRS.push(oprList)
+            if(typeof(oprList) != "undefined") {
+                allOPRS.push(oprList)
+            }
         }
 
     }

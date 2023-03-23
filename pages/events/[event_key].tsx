@@ -5,34 +5,31 @@ import { getAllTeams, getUniqueEvents, getHighestOPRs, getAllOPRsFromEvents } fr
 import { useRouter } from "next/router"
 
 const EventPage = () => {
-    const [eventId, setEventId] = useState('')
     const [teamData, setTeamData] = useState<Array<LeaderboardInfo>>()
 
     const router = useRouter()
 
+    const getData = async (eventId: string) => {
+            const teams = await getAllTeams(eventId);
+            const eventList = await getUniqueEvents();
+            const oprs = await getAllOPRsFromEvents(eventList, teams);
+            console.log(oprs)
+            const oprSummary = getHighestOPRs(oprs, teams);
+            oprSummary.sort((a, b) => {
+                if (a.opr < b.opr) return 1;
+                else if (a.opr > b.opr) return -1;
+                return 0;
+            });
+            setTeamData(oprSummary);
+    }
+
     useEffect(() => {
-        console.log(router.pathname)
+        const { event_key } = router.query
+        if(event_key && !Array.isArray(event_key)) getData(event_key)
     }, [router.isReady])
 
     return (
         <div className={styles.container}>
-            <input type="text" className={styles.eventId} placeholder="Event Id" onChange={(e) => {
-                setEventId(e.target.value)
-            }} />
-            <button onClick={async () => {
-                const teams = await getAllTeams(eventId)
-                console.log(teams)
-                const eventList = await getUniqueEvents()
-                console.log(eventList)
-                const oprs = await getAllOPRsFromEvents(eventList, teams)
-                const oprSummary = getHighestOPRs(oprs, teams)
-                oprSummary.sort((a, b) => {
-                    if(a.opr < b.opr) return 1
-                    else if (a.opr > b.opr) return -1
-                    return 0
-                })
-                setTeamData(oprSummary)
-            }}>click</button>
             {teamData?.map((element, index) => {
                 return (
                     <a href={`/${element.team.key}`} className={styles.row}>
