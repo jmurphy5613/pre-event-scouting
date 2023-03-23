@@ -29,14 +29,20 @@ export const getUniqueEvents = async() => {
 export const getAllOPRsFromEvents = async (eventList: Array<string>, teamList: Array<Team>) => {
     let allOPRS = [];
     for(const event of eventList) {
+        const local = sessionStorage.getItem(event)
+        if(local) {
+            allOPRS.push(JSON.parse(local))
+            continue
+        }
         const eventOprReq = await axios.get(`https://www.thebluealliance.com/api/v3/event/${event}/oprs`, {
             headers: {
                 'X-TBA-Auth-Key': '2RlFFFGFtkzhlFVcMD2dsNKcTO12lBqHbz7ZIwVaqLfSK0xtsv8TAZngRZOFc5E7'
             }
         })
         if(eventOprReq.data) { 
-            const oprList = eventOprReq.data.oprs
+            const oprList = eventOprReq.data.oprs 
             if(typeof(oprList) != "undefined") {
+                sessionStorage.setItem(event, JSON.stringify(oprList))
                 allOPRS.push(oprList)
             }
         }
