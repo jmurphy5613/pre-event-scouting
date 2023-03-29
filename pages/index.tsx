@@ -8,10 +8,12 @@ export default function Home() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>PreEvent Scouting</h1>
             <button className={styles.button} onClick={() => {
                 router.push('/events')
-            }}>Event Search</button>
+            }}>Pre-Event Scouting</button>
+            <button className={styles.button} onClick={() => {
+                router.push('/central-computer')
+            }}>Central Computer</button>
         </div>
     )
 }

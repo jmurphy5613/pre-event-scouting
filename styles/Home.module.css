@@ -1,11 +1,10 @@
 .container {
-    height: 100vh;
+    min-height: 90vh;
     width: 100vw;
     background-color: #101827;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
 
 .eventId {
@@ -17,6 +16,7 @@
     font-family: "Outfit", sans-serif;
 }
 
+
 .eventId:focus {
     outline: none;
 }
@@ -27,9 +27,18 @@
 
 .button {
     padding: 0.5rem;
-    background-color: #3c4552;
+    background-color: white;
+    color: black;
     border: none;
     border-radius: 0.25rem;
     margin-top: 0.5rem;
     cursor: pointer;
+    transition: 0.5s;
+    font-family: "Outfit", sans-serif;
+    margin: 1rem;
+}
+
+.button:hover {
+    background-color: #E879F9;
+    color: white;
 }

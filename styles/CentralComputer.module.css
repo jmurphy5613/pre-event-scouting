@@ -1,0 +1,34 @@
+.container {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #101827;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.button-background {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #B9C1CF;
+    opacity: 0;
+    position: absolute;
+}
+.button-background:hover {
+    opacity: 0.5;
+}
