@@ -1,0 +1,76 @@
+.container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(17, 24, 39, 0.75);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-container {
+    background-color: #374151;
+    min-height: 30vh;
+    min-width: 30vw;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    padding: 2rem;
+}
+
+/* make an "icon-container" class that gives the icon a border and padding with a hover effect */
+.icon-container {
+    border: 1px solid rgba(229,231,235,.15);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    margin: 1rem;
+    flex-direction: column;
+    position: relative;
+}
+.icon-container:hover {
+    border: 1px solid #E879F9;
+    transform: scale(1.05);
+}
+
+.description {
+    position: absolute;
+    bottom: 1rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 300;
+}
+
+.exit {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.exit-background {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #B9C1CF;
+    opacity: 0;
+    position: absolute;
+}
+.exit-background:hover {
+    opacity: 0.5;
+}
