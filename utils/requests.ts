@@ -1,5 +1,5 @@
 import axios from "axios"
-import { LeaderboardInfo, Team } from "./types"
+import { LeaderboardInfo, Match, Team } from "./types"
 
 /* 
 1. get all teams
@@ -64,4 +64,26 @@ export const getHighestOPRs = (oprs: Array<{[key: string]: number}>, teamList: A
         }
     }
     return leaderboardValues
+}
+
+export const fetchAllMatches = async () => {
+    const matches = await axios.get("https://robotics-scouting-charged-up-production.up.railway.app/matches/get-all")
+    return matches.data
+}
+
+export const addMatchesToLocalStorage = async () => {
+    const matches = await fetchAllMatches()
+    const localMatches = localStorage.getItem("matches")
+    if(localMatches) {
+        const localMatchesJSON = JSON.parse(localMatches)
+        const newMatches = localMatchesJSON.concat(matches)
+        const uniqueMatches = newMatches.filter((match: Match, index: number, self: Array<Match>) =>
+            index === self.findIndex((m: Match) => (
+                m.matchNumber === match.matchNumber && m.teamNumber === match.teamNumber
+            ))
+        )
+        localStorage.setItem("matches", JSON.stringify(uniqueMatches))
+    } else {
+        localStorage.setItem("matches", JSON.stringify(matches))
+    }
 }

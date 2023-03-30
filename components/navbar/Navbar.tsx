@@ -5,13 +5,13 @@ const Navbar = () => {
         <div className={styles.container}>
             <h1 className={styles.title}>Jordan Scouting System</h1>
             <div className={styles.links}>
-                <a href="" className={styles.link}>
+                <a href="/" className={styles.link}>
                     Home
                 </a>
-                <a href="" className={styles.link}>
+                <a href="/central-computer" className={styles.link}>
                     Central Computer
                 </a>
-                <a href="" className={styles.link}>
+                <a href="/events" className={styles.link}>
                     PreComp
                 </a>
 

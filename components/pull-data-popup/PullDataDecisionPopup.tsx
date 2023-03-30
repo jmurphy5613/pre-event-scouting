@@ -3,6 +3,7 @@ import { IconContext } from 'react-icons'
 import { AiOutlineQrcode } from 'react-icons/ai'
 import { BiServer } from 'react-icons/bi'
 import { RxCross2 } from 'react-icons/rx'
+import { addMatchesToLocalStorage } from '@/utils/requests'
 
 type PullDataPopupProps = {
     setShowEntryDecisionPopup: (show: boolean) => void
@@ -24,7 +25,7 @@ const PullDataDecisionPopup:React.FC<PullDataPopupProps> = ({ setShowEntryDecisi
                     </IconContext.Provider>
                     <h3 className={styles.description}>QR Scan</h3>
                 </div>
-                <div className={styles["icon-container"]}>
+                <div className={styles["icon-container"]} onClick={addMatchesToLocalStorage}>
                     <IconContext.Provider value={{ size: '4em', color: '#ffffff' }}>
                         <BiServer />
                     </IconContext.Provider>
