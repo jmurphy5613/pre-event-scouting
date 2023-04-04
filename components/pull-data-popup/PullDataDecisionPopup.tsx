@@ -8,10 +8,11 @@ import QRScanner from '../qr-scanner/QRScanner'
 import { useState } from 'react'
 
 type PullDataPopupProps = {
-    setShowEntryDecisionPopup: (show: boolean) => void
+    setShowEntryDecisionPopup: (show: boolean) => void,
+    fetchTeamData: () => void
 }
 
-const PullDataDecisionPopup:React.FC<PullDataPopupProps> = ({ setShowEntryDecisionPopup }) => {
+const PullDataDecisionPopup:React.FC<PullDataPopupProps> = ({ setShowEntryDecisionPopup, fetchTeamData }) => {
 
     const [showQRScanner, setShowQRScanner] = useState<boolean>(false)
 
@@ -25,7 +26,7 @@ const PullDataDecisionPopup:React.FC<PullDataPopupProps> = ({ setShowEntryDecisi
                             <RxCross2 />
                         </IconContext.Provider>
                     </div>
-                    <QRScanner setShowQRScanner={setShowQRScanner} />
+                    <QRScanner fetchTeamData={fetchTeamData} setShowQRScanner={setShowQRScanner} />
                 </div>
             </div>
         )

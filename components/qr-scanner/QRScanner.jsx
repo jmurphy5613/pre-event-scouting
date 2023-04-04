@@ -11,7 +11,10 @@ const QRScanner = (props) => {
       onScan={(data) => {
         if (data && data.text !== null) {
           const match = JSON.parse(data.text)
+          const localMatches = JSON.parse(localStorage.getItem('matches'))
+          if (!localMatches) localStorage.setItem("matches", JSON.stringify([]))
           addMatchToLocalstorage(match)
+          props.fetchTeamData()
           props.setShowQRScanner(false)
         }
       }}

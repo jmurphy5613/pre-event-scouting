@@ -4,15 +4,11 @@ import { getTeamsAverageMatchScore } from '@/utils/localRequests'
 import { useState } from 'react'
 import { TeamGridData } from '@/utils/types'
 
-const TeamGrid = () => {
+type TeamGridProps = {
+    teamData: Array<TeamGridData>
+}
 
-    const [teamData, setTeamData] = useState<Array<TeamGridData>>()
-
-    useEffect(() => {
-        const data = getTeamsAverageMatchScore()
-        setTeamData(data)
-        console.log(data)
-    }, [])
+const TeamGrid:React.FC<TeamGridProps> = ({ teamData }) => {
 
     if(!teamData) return <div></div>
 
