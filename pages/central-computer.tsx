@@ -3,6 +3,7 @@ import { IoIosAdd } from 'react-icons/io'
 import { IconContext } from 'react-icons'
 import { useState } from 'react'
 import PullDataPopup from '../components/pull-data-popup/PullDataDecisionPopup'
+import TeamGrid from '@/components/team-grid/TeamGrid'
 
 const CentralComputer = () => {
 
@@ -18,6 +19,9 @@ const CentralComputer = () => {
                         <IoIosAdd />
                     </IconContext.Provider>
                 </button>
+
+                <TeamGrid />
+
             </div>
         </>
     )

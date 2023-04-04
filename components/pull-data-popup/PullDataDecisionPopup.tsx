@@ -25,7 +25,7 @@ const PullDataDecisionPopup:React.FC<PullDataPopupProps> = ({ setShowEntryDecisi
                             <RxCross2 />
                         </IconContext.Provider>
                     </div>
-                    <QRScanner />
+                    <QRScanner setShowQRScanner={setShowQRScanner} />
                 </div>
             </div>
         )

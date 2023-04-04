@@ -1,0 +1,44 @@
+.grid {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3rem;
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.teamNumber {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+}
+
+.opr {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+}
+
+.column-titles {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.label {
+    font-family: "Outfit";
+    font-size: 1.2rem;
+    color: #E879F9;
+}
+
+.divider {
+    width: 50%;
+    height: 1px;
+    background-color: #324690;
+    margin: 1rem;
+}

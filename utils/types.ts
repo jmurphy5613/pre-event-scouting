@@ -14,13 +14,18 @@ export type Match = {
     teamNumber: number,
     defensive: boolean,
     notes: string,
-    conesScoredAuto: Array<number>,
-    cubesScoredAuto: Array<number>,
-    conesScored: Array<number>,
-    cubesScored: Array<number>,
-    endGameStatus: string,
-    endAutoStatus: string,
+    autoConeScores: Array<number>,
+    autoCubeScores: Array<number>,
+    coneScores: Array<number>,
+    cubeScores: Array<number>,
+    endgameStatus: string,
+    autoStatus: string,
     feedLocation: string,
-    feederType: string,
-    scouterId: number
+    pickup: string,
+    scouter: string
+}
+
+export type TeamGridData = {
+    teamNumber: number,
+    averageGamePieceScore: number
 }
