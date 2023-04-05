@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { getRelevantMatchData, getTeleopTeamGamePieceCounts } from '@/utils/localRequests'
 import { GamePieceCount, MatchData } from '@/utils/types'
 import PerformanceGraph from '@/components/performance-graph/PerformanceGraph'
+import MatchList from '@/components/match-list/MatchList'
 
 
 const TeamProfile = () => {
@@ -25,11 +26,12 @@ const TeamProfile = () => {
 
     }, [router.isReady])
 
-    if(!teleopGamePieceCounts) return <div></div>
+    if(!teleopGamePieceCounts || !relevantMatchData) return <div></div>
 
     return (
         <div className={styles.container}>
             <PerformanceGraph teleopGamePieceCounts={teleopGamePieceCounts} />
+            <MatchList matchData={relevantMatchData} />
         </div>
     )
 }

@@ -1,5 +1,41 @@
 .grid {
     display: flex;
     flex-direction: column;
-    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.match {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 1rem 0 1rem 0;
+}
+
+.data {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.divider {
+    width: 90%;
+    height: 1px;
+    background-color: #324690;
+    margin: 1rem;
+}
+
+.column-titles {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.label {
+    font-family: "Outfit";
+    font-size: 1.2rem;
+    color: #E879F9;
 }
