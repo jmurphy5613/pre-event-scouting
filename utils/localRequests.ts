@@ -1,4 +1,4 @@
-import { Match, TeamGridData } from "./types";
+import { GamePieceCount, Match, TeamGridData } from "./types";
 
 
 export const addMatchToLocalstorage = (match: Match) => {
@@ -7,7 +7,7 @@ export const addMatchToLocalstorage = (match: Match) => {
         const localMatchesJSON = JSON.parse(localMatches) as Array<Match>
         //check if match already exists
         for(const localMatch of localMatchesJSON) {
-            if(localMatch.matchNumber == match.matchNumber && localMatch.teamNumber == match.teamNumber) {
+            if(localMatch.matchId == match.matchId && localMatch.teamNumber == match.teamNumber) {
                 return
             }
         }
@@ -63,4 +63,20 @@ export const getTeamsAverageMatchScore = () => {
         })
     }
     return teamScores
+}
+
+export const getTeleopTeamGamePieceCounts = (teamNumber: number) => {
+    const localMatches = localStorage.getItem("matches")
+    let gamePieceCounts: Array<GamePieceCount> = []
+    if(localMatches) {
+        for(const match of JSON.parse(localMatches) as Array<Match>) {
+            if(match.teamNumber == teamNumber) {
+                gamePieceCounts.push({
+                    matchNumber: match.matchId,
+                    gamePieceCount: match.coneScores[0] + match.coneScores[1] + match.coneScores[2] + match.cubeScores[0] + match.cubeScores[1] + match.cubeScores[2]
+                })
+            }
+        }
+    }
+    return gamePieceCounts
 }

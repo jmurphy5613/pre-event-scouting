@@ -10,7 +10,7 @@ export type LeaderboardInfo = {
 }
 
 export type Match = {
-    matchNumber: number,
+    matchId: number,
     teamNumber: number,
     defensive: boolean,
     notes: string,
@@ -28,4 +28,9 @@ export type Match = {
 export type TeamGridData = {
     teamNumber: number,
     averageGamePieceScore: number
+}
+
+export type GamePieceCount = {
+    matchNumber: number,
+    gamePieceCount: number
 }
