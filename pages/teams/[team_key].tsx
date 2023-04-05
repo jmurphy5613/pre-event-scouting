@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import styles from '../../styles/TeamProfile.module.css'
-import { VictoryBar, VictoryChart, VictoryThemeDefinition, VictoryTheme, VictoryAxis } from 'victory'
 import { useRouter } from 'next/router'
 import { getTeleopTeamGamePieceCounts } from '@/utils/localRequests'
 import { GamePieceCount } from '@/utils/types'
-import { getTickLabels } from '@/utils/conversions'
+import PerformanceGraph from '@/components/performance-graph/PerformanceGraph'
 
 
 const TeamProfile = () => {
@@ -26,56 +25,7 @@ const TeamProfile = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.chart}>
-                <VictoryChart domainPadding={40} style={{
-                
-                }}>
-                    <VictoryAxis
-                        dependentAxis
-                        label={"Game Pieces Scored"}
-                        style={{
-                            axisLabel: {
-                                padding: 30,
-                                fill: "#ffffff"
-                            },
-                            tickLabels: {
-                                fill: "#ffffff"
-                            },
-                            axis: {
-                                stroke: "#ffffff"
-                            },
-                        }}
-                        tickFormat={(x) => Math.round(x * 100) / 100}
-                    />
-                    <VictoryAxis 
-                        tickValues={getTickLabels(teleopGamePieceCounts)}
-                        label={"Match Number"}
-                        style={{
-                            axisLabel: {
-                                padding: 30,
-                                fill: "#ffffff"
-                            },
-                            tickLabels: {
-                                fill: "#ffffff"
-                            },
-                            axis: {
-                                stroke: "#ffffff"
-                            }
-                        }}
-                    />
-                    <VictoryBar
-                        data={teleopGamePieceCounts}
-                        x={"matchNumber"}
-                        y={"gamePieceCount"}
-                        style={{
-                            data: {
-                                fill: "#324690"
-                            }
-                        }}
-                    />
-                </VictoryChart>
-            </div>
-
+            <PerformanceGraph teleopGamePieceCounts={teleopGamePieceCounts} />
         </div>
     )
 }
