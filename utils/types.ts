@@ -34,3 +34,11 @@ export type GamePieceCount = {
     matchNumber: number,
     gamePieceCount: number
 }
+
+export type MatchData = {
+    matchId: number,
+    autoGamePieceCount: number,
+    teleopGamePieceCount: number,
+    autoCharge: boolean,
+    teleopCharge: boolean,
+}

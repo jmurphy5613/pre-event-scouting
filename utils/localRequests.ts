@@ -1,4 +1,4 @@
-import { GamePieceCount, Match, TeamGridData } from "./types";
+import { GamePieceCount, Match, MatchData, TeamGridData } from "./types";
 
 
 export const addMatchToLocalstorage = (match: Match) => {
@@ -79,4 +79,23 @@ export const getTeleopTeamGamePieceCounts = (teamNumber: number) => {
         }
     }
     return gamePieceCounts
+}
+
+export const getRelevantMatchData = (teamNumber: number) => {
+    const localMatches = localStorage.getItem("matches")
+    let matchData: Array<MatchData> = []
+    if(localMatches) {
+        for(const match of JSON.parse(localMatches) as Array<Match>) {
+            if(match.teamNumber == teamNumber) {
+                matchData.push({
+                    matchId: match.matchId,
+                    autoGamePieceCount: match.autoConeScores[0] + match.autoConeScores[1] + match.autoConeScores[2] + match.autoCubeScores[0] + match.autoCubeScores[1] + match.autoCubeScores[2],
+                    teleopGamePieceCount: match.coneScores[0] + match.coneScores[1] + match.coneScores[2] + match.cubeScores[0] + match.cubeScores[1] + match.cubeScores[2],
+                    autoCharge: match.autoStatus === "DockedAndEngaged",
+                    teleopCharge: match.endgameStatus.includes("Docked")
+                })
+            }
+        }
+    }
+    return matchData
 }
